@@ -46,7 +46,7 @@ export default class Button extends React.Component<ButtonProps, any>{
                 //这里可以根据各属性动态添加，如果属性值为true则为其添加该类名，如果值为false，则不添加。这样达到了动态添加class的目的
                 'zhy-base-primary': type === 'primary', //只要是true类型
                 'zhy-base-ghost': type === 'ghost', //只要是true类型
-                'zhy-base':type,
+                'zhy-base':type? false : true,
                 'zhy-inProgress': false,
                 'zhy-error': 1, //只要是true类型
                 'zhy-disabled': 1, //只要是true类型

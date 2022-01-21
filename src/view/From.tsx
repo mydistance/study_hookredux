@@ -1,5 +1,7 @@
 import { Form, Input, InputNumber, Button } from 'antd';
-import exp from 'constants';
+import Tree from '../components/Tree/TreeDemo'
+import { treeList } from '../components/Tree/treeList.js'
+
 
 const layout = {
   labelCol: { span: 8 },
@@ -23,11 +25,29 @@ const Demo = () => {
   const onFinish = (values: any) => {
     console.log(values);
   };
+  const noblur = (values:any) =>{
+    console.log('失焦',values);
+  }
+  const haveblur = (values:any) =>{
+    console.log('聚焦',values);
+  }
+  const changeInput = (e:any)=>{
+    console.log(e.target.value)
+  }
+
+  const myobj = {
+    name:"鲁大师",
+    age:"80",
+    attribute:"1"
+  }
+  console.log(Object.keys(myobj),Object.values(myobj))
+
 
   return (
+    <>
     <Form {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
       <Form.Item name={['user', 'name']} label="Name" rules={[{ required: true }]}>
-        <Input />
+        <Input   onBlur = {noblur}  onFocus={haveblur } onChange={changeInput} />
       </Form.Item>
       <Form.Item name={['user', 'email']} label="Email" rules={[{ type: 'email' }]}>
         <Input />
@@ -47,6 +67,10 @@ const Demo = () => {
         </Button>
       </Form.Item>
     </Form>
+    <Tree 
+        treeList = {treeList}
+    /> 
+    </>
   );
 };
 
